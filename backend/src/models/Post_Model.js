@@ -1,30 +1,25 @@
 const mongoose=require("mongoose");
 
 const postSchema = new mongoose.Schema({
-    userID:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    },
-    text: {
+    content: {
         type: String,
+        required: true,
+        maxLength: 300,
+        minLength: 5
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     },
     comments: [
         {
-            text: {
-                type: String,
-                required: true,
-            },
-            user: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "User",
-                required: true,
-            },
-        },
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
     ],
 },{ timestamps: true });
 
 const Post = mongoose.model("Post", postSchema);
 
 module.exports=Post;
-
-export default Post;

@@ -6,9 +6,11 @@ class CrudRepository{
 
     async create(data){
         try {
+            console.log("Creating document with data:", data);
             const response = await this.model.create(data);
             return response;
         } catch (error) {
+            console.log(error);
             console.log("Error in CRUD Repository Layer");
             throw {error};
         }
@@ -31,6 +33,7 @@ class CrudRepository{
             const response = await this.model.findById(id);
             return response;
         } catch (error) {
+            console.log(error)
             console.log("Error in CRUD Repository Layer");
             throw {error};
         }

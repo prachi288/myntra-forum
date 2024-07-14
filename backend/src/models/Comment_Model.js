@@ -22,11 +22,6 @@ const commentSchema = new mongoose.Schema({
         required: true,
         refPath: 'onModel' // Dynamically references the correct model
     },
-    post: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Post',
-        required: true
-    },
     comments: [
         {
             type: mongoose.Schema.Types.ObjectId,
